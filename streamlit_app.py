@@ -1,9 +1,9 @@
 import streamlit
 
-streamlit.title("We love you Neeva")
+streamlit.title("My mom's new healthy dinner")
 
-streamlit.header("You are blessing in our life")
+streamlit.header('Breakfast Menu')
 
-streamlit.text("You were born on 23rd Jan 2022")
-streamlit.text("We were very happy to see you for the first time")
-streamlit.text("Neeva, remember, your parents love you a lot!")
+streamlit.text('Omega 3 & Blueberry Oatmeal')
+streamlit.text('Kale, Spinach & Rocket Smoothie')
+streamlit.text('Hard-Boiled Free-Range Egg')
