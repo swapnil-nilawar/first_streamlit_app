@@ -35,6 +35,8 @@ def get_fruityvice_data(this_fruit_choice):
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
   return fruityvice_normalized
+
+
   
 streamlit.header("Fruityvice Fruit Advice!")
 try:
@@ -60,7 +62,16 @@ except URLError as e:
 
 # write your own comment - what does this do?
 
+def insert_row_in_snowflake(new_fruit):
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute("insert into fruit_load_list values('from streamlit')")
+    return "Thanks for adding " + new_fruit
 
+fruit_to_add = streamlit.text_input('What fruit would you like to add?')
+if streamlit.button('Addd a fruit to the list'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  back_from_function = insert_row_in_snowflake(fruit_to_add)
+  streamlit.text(back_from_function)
 
 streamlit.stop()
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
